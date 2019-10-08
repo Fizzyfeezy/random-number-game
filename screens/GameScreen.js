@@ -19,6 +19,7 @@ function GameScreen(props) {
     const [currentGuess, setCurrentGuess] = useState(generateRandomBetween(1, 100, userChoice));
 
     const [rounds, setRounds] = useState(0);
+    
     const currentLow = useRef(1);
     const currentHigh = useRef(100);
 
@@ -31,11 +32,11 @@ function GameScreen(props) {
     const nextGuessHandler = direction => {
         if ((direction === 'lower' && currentGuess < userChoice) || 
         (direction === 'greater' && currentGuess < userChoice)) {
-            Alert.alert('Don\'t lie!', 'You know that this is wrong',
-            [{title : 'Sorry!', style: 'cancel'}]);
+            Alert.alert('Don\'t lie!', 'You know that this is wrong...',
+            [{text : 'Sorry!', style: 'cancel'}]);
             return;
         }
-        if (direction === 'lower') {
+        else if (direction === 'lower') {
             currentHigh.current = currentGuess;
         } else {
             currentLow.current = currentGuess;
